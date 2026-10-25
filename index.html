@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Миша Уточкин — снимаю дорого, живу обычно</title>
+<meta name="description" content="Оператор и монтажёр из Москвы. Делаю бота «Уточка», который монтирует рилсы так же, как я.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="Миша Уточкин — снимаю дорого, живу обычно">
+<meta property="og:description" content="Бот «Уточка» монтирует рилсы из твоих исходников в моём стиле.">
+<meta property="og:image" content="media/og.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23000'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23ff3b30'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Onest:wght@400;500;600&family=Caveat:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>
+  // анимации: по системной настройке, или принудительно через ?motion=1 (запоминается)
+  (function () {
+    var on = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+    try {
+      var q = new URLSearchParams(location.search).get('motion');
+      if (q === '1') localStorage.setItem('motion', '1');
+      if (q === '0') localStorage.removeItem('motion');
+      if (localStorage.getItem('motion') === '1') on = true;
+    } catch (e) {}
+    if (on) document.documentElement.classList.add('motion');
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#reels">К роликам</a>
+
+<header class="top">
+  <a class="top__name" href="#">Миша Уточкин</a>
+  <nav class="top__nav" aria-label="Разделы">
+    <a href="#reels">Ролики</a>
+    <a href="#bot">Бот</a>
+    <a href="#price">Цены</a>
+  </nav>
+  <a class="top__cta" href="#waitlist">В очередь на бота</a>
+</header>
+
+<main>
+
+<!-- 1. Монитор -->
+<section class="hero" aria-label="Первый экран">
+  <video class="hero__ambient" src="media/street.mp4" muted loop playsinline autoplay preload="auto" aria-hidden="true"></video>
+
+  <div class="hero__copy">
+    <h1 class="hero__title">
+      <span class="line"><span>Снимаю дорого.</span></span>
+      <span class="line"><span>Живу обычно.</span></span>
+    </h1>
+    <p class="hero__lead">Я Миша, оператор и монтажёр из Москвы. Делаю бота, который монтирует рилсы из твоих исходников так же, как я.</p>
+    <div class="hero__actions">
+      <a class="btn btn--sodium" href="#waitlist">Встать в очередь на бота</a>
+      <a class="btn btn--ghost" href="#reels">Смотреть ролики</a>
+    </div>
+  </div>
+
+  <figure class="monitor" aria-label="Кадр из ролика Broken lens, ночная улица через тилт-объектив">
+    <video class="monitor__video" src="media/street.mp4" poster="media/street.jpg" muted loop playsinline autoplay preload="auto"></video>
+    <div class="monitor__ui" aria-hidden="true">
+      <div class="ui-row ui-row--top">
+        <span class="rec"><i></i>REC</span>
+        <span class="tc" data-timecode>00:00:00:00</span>
+        <span>4K 25p</span>
+      </div>
+      <div class="focus" data-focus><i></i><i></i><i></i><i></i></div>
+      <div class="ui-row ui-row--bottom">
+        <span>ISO 800</span><span>1/50</span><span>F1.4</span><span>3200K</span>
+        <span class="batt"><b></b></span>
+      </div>
+    </div>
+    <figcaption class="monitor__cap">Broken lens. TTArtisan Tilt 35 мм, Sony ZV-E10 II. <span>46,1 тыс. просмотров</span></figcaption>
+  </figure>
+</section>
+
+<!-- 2. Ролики -->
+<section class="reels" id="reels" aria-labelledby="reels-title">
+  <div class="wrap reels__head">
+    <h2 id="reels-title" class="h2">Ролики, которые досмотрели</h2>
+    <p class="muted">Подписчиков у меня 2 122. Самый смотримый ролик набрал в двадцать раз больше. Листай вбок.</p>
+  </div>
+  <div class="strip" data-strip tabindex="0" aria-label="Лента роликов, листается горизонтально">
+    <article class="tile">
+      <div class="tile__media"><video src="media/street.mp4" poster="media/street.jpg" muted loop playsinline preload="none"></video></div>
+      <p class="tile__views">46,1 тыс.</p>
+      <h3 class="tile__title">Broken lens</h3>
+      <p class="tile__note">Все спрашивают, не сломан ли объектив. Это тилт.</p>
+    </article>
+    <article class="tile">
+      <div class="tile__media"><img src="media/c/DcO_iDlNrT6.jpg" alt="Красный свет над сценой на концерте" loading="lazy"></div>
+      <p class="tile__views">11,9 тыс.</p>
+      <h3 class="tile__title">Стамбул, концерт Коржа</h3>
+      <p class="tile__note">Ехал на концерт, а вернулся с чем-то гораздо большим.</p>
+    </article>
+    <article class="tile">
+      <div class="tile__media"><img src="media/c/DQcOa8vjduj.jpg" alt="Миша смотрит в камеру, крупный план" loading="lazy"></div>
+      <p class="tile__views">9 181</p>
+      <h3 class="tile__title">Дневник</h3>
+      <p class="tile__note">Про жизнь мужчины, отца и мужа. Без фильтров, но с теплом.</p>
+    </article>
+    <article class="tile">
+      <div class="tile__media"><video src="media/budni.mp4" poster="media/budni.jpg" muted loop playsinline preload="none"></video></div>
+      <p class="tile__views">3 893</p>
+      <h3 class="tile__title">Будни видеографа</h3>
+      <p class="tile__note">Метро, работа, барбер, домой. Один день за минуту.</p>
+    </article>
+    <article class="tile">
+      <div class="tile__media"><video src="media/lambo.mp4" poster="media/lambo.jpg" muted loop playsinline preload="none"></video></div>
+      <p class="tile__views">3 094</p>
+      <h3 class="tile__title">Huracan, speed ramp</h3>
+      <p class="tile__note">Вторая работа в технике speed ramp. iPhone 13 Pro и After Effects.</p>
+    </article>
+    <article class="tile">
+      <div class="tile__media"><video src="media/amg.mp4" poster="media/amg.jpg" muted loop playsinline preload="none"></video></div>
+      <p class="tile__views">2 033</p>
+      <h3 class="tile__title">Лавандовый AMG GT</h3>
+      <p class="tile__note">Редко цвет машины настолько задаёт настроение всему ролику.</p>
+    </article>
+    <article class="tile">
+      <div class="tile__media"><img src="media/c/Dd2bFHooVb5.jpg" alt="Осенний парк, качели-гнездо" loading="lazy"></div>
+      <p class="tile__views">2 912</p>
+      <h3 class="tile__title">Я тут время увидел</h3>
+      <p class="tile__note">Осень, качели и одна фраза снизу кадра.</p>
+    </article>
+  </div>
+</section>
+
+<!-- 3. Живу обычно -->
+<section class="life" aria-labelledby="life-title">
+  <div class="wrap life__grid">
+    <div class="life__text">
+      <h2 id="life-title" class="h2">Живу обычно</h2>
+      <p>Мне 28, я из Солнцево. Жена, двое сыновей и большая кухня, которой у нас наконец-то хватает на всех.</p>
+      <p>Днём снимаю машины для компании, которая возит их по параллельному импорту. Вечером монтирую то, что наснимал за день: поездки, концерты, дачу, будни.</p>
+      <p>Сетап: Sony ZV-E10 II, стабилизатор DJI RS 4 Mini, монитор Feelworld и объектив TTArtisan Tilt 35 мм, который все считают сломанным.</p>
+      <p class="life__more">Остальное пишу в телеграме <a href="https://t.me/neshutochki" target="_blank" rel="noopener">«нешуточки»</a>: отцовство, съёмки, радости недели.</p>
+    </div>
+    <div class="collage" aria-label="Коллаж из одного дня">
+      <figure class="cut cut--a"><img src="media/c/DcljS9dt81Q.jpg" alt="Миша с камерой на улице" loading="lazy"><figcaption>11:16 работа</figcaption></figure>
+      <figure class="cut cut--b"><img src="media/c/DVo1mgiDZJg.jpg" alt="Улица в Ташкенте, минарет" loading="lazy"><figcaption>Ташкент</figcaption></figure>
+      <figure class="cut cut--c"><img src="media/c/DDPTrFotF9r.jpg" alt="Миша в олимпийке, руки скрещены" loading="lazy"><figcaption>после тренировки</figcaption></figure>
+      <figure class="cut cut--d"><img src="media/c/Dbl5Z6VtJjv.jpg" alt="Деревянный дом на закате" loading="lazy"><figcaption>20:15 дача</figcaption></figure>
+      <p class="collage__sign">мои будни<br><span>25 / 10 / 26</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Бот: монтажный стол -->
+<section class="bot" id="bot" aria-labelledby="bot-title">
+  <div class="bot__intro wrap">
+    <h2 id="bot-title" class="h2">Уточка монтирует как я</h2>
+    <p class="muted">Бот в телеграме. Кидаешь исходники с телефона, через пару минут забираешь готовый рилс. Вот что происходит внутри.</p>
+  </div>
+
+  <div class="desk" data-desk>
+    <div class="desk__sticky">
+      <ol class="steps" data-steps>
+        <li data-n="01" class="is-on"><b>Кидаешь 20 клипов</b><span>Прямо с телефона, как есть: дрожащие, длинные, вперемешку.</span></li>
+        <li data-n="02"><b>Бот выбирает лучшее</b><span>Смазанное и пустое уходит, остаются живые секунды.</span></li>
+        <li data-n="03"><b>Режет под бит</b><span>Склейки встают на сильные доли твоего трека.</span></li>
+        <li data-n="04"><b>Красит в мой цвет</b><span>Тёплые огни, глубокие тени, ни одного серого кадра.</span></li>
+        <li data-n="05"><b>Подписывает от руки</b><span>Время и место, как в моих «буднях».</span></li>
+      </ol>
+
+      <div class="phone" aria-hidden="true">
+        <div class="phone__screen">
+          <div class="chat" data-chat>
+            <p class="chat__bot-name">Уточка</p>
+            <p class="msg msg--me">20 видео, 3,2 ГБ</p>
+            <p class="msg msg--bot">Принял. Монтирую в стиле «День».</p>
+          </div>
+          <div class="preview" data-preview></div>
+          <p class="preview__note" data-note>11:16 работа</p>
+          <div class="done" data-done>
+            <p class="msg msg--bot">Готово. 0:42, 1080 × 1920.</p>
+            <span class="done__btn">Скачать ролик</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline" data-timeline aria-hidden="true">
+        <div class="tl__ruler"></div>
+        <div class="tl__track tl__track--v"><span class="tl__label">V1</span></div>
+        <div class="tl__track tl__track--a"><span class="tl__label">A1</span><div class="wave" data-wave></div></div>
+        <div class="tl__track tl__track--t"><span class="tl__label">T1</span></div>
+        <div class="tl__clips" data-clips></div>
+        <div class="tl__titles" data-titles></div>
+        <div class="playhead" data-playhead></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Режимы -->
+<section class="modes" aria-labelledby="modes-title">
+  <div class="wrap">
+    <h2 id="modes-title" class="h2">Четыре режима</h2>
+    <p class="modes__lead">На старте открыты первые два. Остальные подключаем, когда первые обкатаются на живых роликах.</p>
+    <ul class="modes__list" data-modes>
+      <li class="mode" data-media="media/budni.mp4">
+        <h3 class="mode__name">День</h3>
+        <p class="mode__what">10–40 клипов за день или поездку превращаются в минуту кино с бит-склейками и подписями от руки.</p>
+        <p class="mode__state">с первого дня</p>
+      </li>
+      <li class="mode" data-media="media/c/DeRr3zzN82m.jpg">
+        <h3 class="mode__name">Голова</h3>
+        <p class="mode__what">Говоришь в камеру, бот вырезает паузы и дубли, ставит субтитры и зумы.</p>
+        <p class="mode__state">с первого дня</p>
+      </li>
+      <li class="mode" data-media="media/lambo.mp4">
+        <h3 class="mode__name">Тачка</h3>
+        <p class="mode__what">Проходка вокруг машины становится роликом со speed ramp под трек. Для автосалонов и перекупов.</p>
+        <p class="mode__state">весной</p>
+      </li>
+      <li class="mode" data-media="media/amg.mp4">
+        <h3 class="mode__name">Как у них</h3>
+        <p class="mode__what">Кидаешь ссылку на чужой рилс, бот повторяет его ритм и монтаж на твоих кадрах.</p>
+        <p class="mode__state">весной</p>
+      </li>
+    </ul>
+  </div>
+  <div class="mode-peek" data-peek aria-hidden="true"></div>
+</section>
+
+<!-- 6. Цены -->
+<section class="price" id="price" aria-labelledby="price-title">
+  <div class="wrap">
+    <h2 id="price-title" class="h2">Сколько стоит</h2>
+    <p class="muted">Первый ролик бесплатно, с водяным знаком. Подписку можно отменить в любой момент.</p>
+    <div class="plans">
+      <div class="plan">
+        <h3>Попробовать</h3>
+        <p class="plan__cost">0 ₽</p>
+        <p>1 ролик с водяным знаком, чтобы увидеть результат на своих кадрах.</p>
+      </div>
+      <div class="plan">
+        <h3>Старт</h3>
+        <p class="plan__cost">690 ₽<small> в месяц</small></p>
+        <p>8 роликов. Режимы «День» и «Голова».</p>
+      </div>
+      <div class="plan plan--main">
+        <h3>Про</h3>
+        <p class="plan__cost">1 490 ₽<small> в месяц</small></p>
+        <p>30 роликов. Все режимы, свой шрифт и цвет.</p>
+      </div>
+      <div class="plan">
+        <h3>Бизнес</h3>
+        <p class="plan__cost">4 990 ₽<small> в месяц</small></p>
+        <p>120 роликов, режим «Тачка», логотип и несколько аккаунтов. Для СММщиков и салонов.</p>
+      </div>
+    </div>
+    <p class="price__pack">Не любишь подписки? 5 роликов разово за 490 ₽.</p>
+  </div>
+</section>
+
+<!-- 7. Что дальше -->
+<section class="next" aria-labelledby="next-title">
+  <div class="wrap">
+    <h2 id="next-title" class="h2">Что дальше</h2>
+    <ol class="seasons">
+      <li>
+        <p class="seasons__when">декабрь 2026</p>
+        <h3>Бот</h3>
+        <p>Режимы «День» и «Голова». Первые 30 человек монтируют бесплатно и помогают настроить стиль.</p>
+      </li>
+      <li>
+        <p class="seasons__when">весна 2027</p>
+        <h3>Набор Уточкина</h3>
+        <p>Мой цвет в виде LUT, шаблоны и переходы для CapCut, панель для Premiere, которая сама собирает влог.</p>
+      </li>
+      <li>
+        <p class="seasons__when">после 200 участников</p>
+        <h3>Клуб</h3>
+        <p>Разборы роликов раз в неделю, задание недели, мои исходники для практики. Монтаж ботом внутри.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- 8. Очередь -->
+<section class="wait" id="waitlist" aria-labelledby="wait-title">
+  <video class="wait__bg" src="media/street.mp4" poster="media/street.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+  <div class="wrap wait__inner">
+    <h2 id="wait-title" class="wait__title">Скинь двадцать видео.<br>Получи кино.</h2>
+    <p>Первые 30 человек в очереди монтируют бесплатно весь бета-тест. Напиши мне «хочу в Уточку» или подпишись на канал, там будет запуск.</p>
+    <div class="hero__actions">
+      <a class="btn btn--sodium" href="https://t.me/mishautochkin" target="_blank" rel="noopener">Написать Мише в телеграм</a>
+      <a class="btn btn--ghost" href="https://t.me/neshutochki" target="_blank" rel="noopener">Канал «нешуточки»</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__row">
+    <p>Миша Уточкин, Москва, 2026</p>
+    <nav aria-label="Соцсети">
+      <a href="https://www.instagram.com/mishautochkin/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.threads.com/@mishautochkin" target="_blank" rel="noopener">Threads</a>
+      <a href="https://t.me/neshutochki" target="_blank" rel="noopener">Телеграм</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/lenis.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
