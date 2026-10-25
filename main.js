@@ -6,9 +6,15 @@
   const lerp = (a, b, t) => a + (b - a) * t;
   const ease = (t) => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
-  /* ---------- видео: без движения стоят на постере ---------- */
-  const autoVideos = [...document.querySelectorAll('video[autoplay]')];
-  if (!motion) autoVideos.forEach(v => { v.removeAttribute('autoplay'); v.pause(); });
+  /* ---------- видео — это контент: играют, когда видны на экране ---------- */
+  const playInView = (videos, threshold = .4) => {
+    if (!('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver((entries) => entries.forEach(en => {
+      const v = en.target;
+      if (en.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause();
+    }), { threshold });
+    videos.forEach(v => io.observe(v));
+  };
 
   /* ---------- плавный скролл ---------- */
   let lenis = null;
@@ -90,19 +96,7 @@
   /* ---------- 2. лента роликов ---------- */
   const strip = document.querySelector('[data-strip]');
   const stripVideos = [...strip.querySelectorAll('video')];
-  if (motion && 'IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => entries.forEach(en => {
-      const v = en.target;
-      if (en.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause();
-    }), { threshold: .5 });
-    stripVideos.forEach(v => io.observe(v));
-  } else {
-    stripVideos.forEach(v => {
-      const tile = v.closest('.tile');
-      tile.addEventListener('pointerenter', () => v.play().catch(() => {}));
-      tile.addEventListener('pointerleave', () => v.pause());
-    });
-  }
+  playInView(stripVideos, .5);
   if (fine) {
     let down = false, sx = 0, sl = 0, moved = false;
     strip.addEventListener('pointerdown', (e) => {
@@ -279,7 +273,8 @@
 
   /* ---------- 5. режимы: превью за курсором ---------- */
   const peek = document.querySelector('[data-peek]');
-  if (fine) {
+  playInView([...document.querySelectorAll('.mode__media video')]);
+  if (fine && matchMedia('(min-width: 1001px)').matches) {
     const pp = { x: 0, y: 0, tx: 0, ty: 0, on: false };
     const move = () => {
       pp.x = motion ? lerp(pp.x, pp.tx, .16) : pp.tx;
@@ -291,7 +286,7 @@
       m.addEventListener('pointerenter', (e) => {
         const src = m.dataset.media;
         const isVid = src.endsWith('.mp4');
-        peek.innerHTML = isVid && motion
+        peek.innerHTML = isVid
           ? `<video src="${src}" muted loop playsinline autoplay></video>`
           : `<img src="${isVid ? src.replace('.mp4', '.jpg') : src}" alt="">`;
         pp.tx = e.clientX + 28; pp.ty = e.clientY - 150;
@@ -303,21 +298,18 @@
     });
   }
 
-  /* ---------- шапка над лавандой темнеет ---------- */
+  /* ---------- шапка: плотный фон после первого экрана, лавандовый над режимами ---------- */
   const top = document.querySelector('.top');
   const modesSec = document.querySelector('.modes');
   const headerTone = () => {
     const r = modesSec.getBoundingClientRect();
-    top.classList.toggle('on-light', r.top < 40 && r.bottom > 40);
+    const light = r.top < 40 && r.bottom > 40;
+    top.classList.toggle('on-light', light);
+    top.classList.toggle('solid', !light && scrollY > 60);
   };
   addEventListener('scroll', headerTone, { passive: true });
   headerTone();
 
   /* ---------- 8. фон очереди ---------- */
-  const waitBg = document.querySelector('.wait__bg');
-  if (motion && 'IntersectionObserver' in window) {
-    new IntersectionObserver(([en]) => {
-      if (en.isIntersecting) { waitBg.preload = 'auto'; waitBg.play().catch(() => {}); } else waitBg.pause();
-    }, { threshold: .2 }).observe(waitBg);
-  }
+  playInView([document.querySelector('.wait__bg')], .2);
 })();
